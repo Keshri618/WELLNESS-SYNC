@@ -2,9 +2,31 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Search, Users, UserPlus, MessageCircle, X, Heart, Filter, Calendar, MapPin, Award } from 'lucide-react';
 
+// Define interface for buddy data
+interface Buddy {
+  id: number;
+  name: string;
+  interests: string[];
+  goals: string[];
+  matchScore: number;
+  availability: string;
+  location: string;
+  avatar: string;
+  bio: string;
+  experience: string;
+}
+
+// Define interface for filters
+interface Filters {
+  activities: string[];
+  goals: string[];
+  availability: string;
+  location: string;
+}
+
 export default function BuddyMatchSection() {
-  const [activeTab, setActiveTab] = useState('discover');
-  const [filters, setFilters] = useState(() => {
+  const [activeTab, setActiveTab] = useState<'discover' | 'match'>('discover');
+  const [filters, setFilters] = useState<Filters>(() => {
     // Load filters from localStorage if available
     const savedFilters = localStorage.getItem('buddyFilters');
     return savedFilters ? JSON.parse(savedFilters) : {
@@ -16,15 +38,15 @@ export default function BuddyMatchSection() {
   });
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [buddies, setBuddies] = useState([]);
-  const [potentialMatches, setPotentialMatches] = useState([]);
+  const [buddies, setBuddies] = useState<Buddy[]>([]);
+  const [potentialMatches, setPotentialMatches] = useState<Buddy[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [matchAnimation, setMatchAnimation] = useState(false);
-  const [currentMatch, setCurrentMatch] = useState(null);
+  const [currentMatch, setCurrentMatch] = useState<Buddy | null>(null);
 
-  // Mock data (same as provided)
-  const mockBuddies = [
+  // Mock data
+  const mockBuddies: Buddy[] = [
     {
       id: 1,
       name: 'Alex Johnson',
@@ -37,7 +59,7 @@ export default function BuddyMatchSection() {
       bio: 'Dedicated yogi looking for meditation partners to practice mindfulness techniques.',
       experience: 'Intermediate',
     },
-    // ... (other mock buddies remain the same)
+    // Add more mock buddies as needed
   ];
 
   const activityOptions = ['Yoga', 'Running', 'Meditation', 'Weight Training', 'Swimming', 'HIIT', 'Cycling', 'Nutrition', 'Mindfulness', 'Hiking', 'Pilates', 'Dance', 'Outdoor fitness'];
@@ -70,7 +92,7 @@ export default function BuddyMatchSection() {
   }, []);
 
   // Filter handlers
-  const toggleActivityFilter = (activity) => {
+  const toggleActivityFilter = (activity: string) => {
     setFilters(prev => ({
       ...prev,
       activities: prev.activities.includes(activity)
@@ -79,7 +101,7 @@ export default function BuddyMatchSection() {
     }));
   };
 
-  const toggleGoalFilter = (goal) => {
+  const toggleGoalFilter = (goal: string) => {
     setFilters(prev => ({
       ...prev,
       goals: prev.goals.includes(goal)
@@ -88,14 +110,14 @@ export default function BuddyMatchSection() {
     }));
   };
 
-  const setAvailabilityFilter = (availability) => {
+  const setAvailabilityFilter = (availability: string) => {
     setFilters(prev => ({
       ...prev,
       availability
     }));
   };
 
-  const setLocationFilter = (location) => {
+  const setLocationFilter = (location: string) => {
     setFilters(prev => ({
       ...prev,
       location
@@ -128,11 +150,11 @@ export default function BuddyMatchSection() {
   }, [buddies, searchQuery, filters]);
 
   // Handle send buddy request
-  const sendBuddyRequest = (buddyId) => {
+  const sendBuddyRequest = (buddyId: number) => {
     alert(`Buddy request sent to user #${buddyId}!`);
   };
 
-  const handleLikeMatch = (match) => {
+  const handleLikeMatch = (match: Buddy) => {
     setCurrentMatch(match);
     setMatchAnimation(true);
     setTimeout(() => {
@@ -141,12 +163,12 @@ export default function BuddyMatchSection() {
     }, 2000);
   };
 
-  const handleSkipMatch = (matchId) => {
+  const handleSkipMatch = (matchId: number) => {
     setPotentialMatches(prev => prev.filter(m => m.id !== matchId));
   };
 
   // Get experience level badge color
-  const getExperienceBadgeColor = (level) => {
+  const getExperienceBadgeColor = (level: string) => {
     switch(level) {
       case 'Beginner': return 'bg-green-100 text-green-700';
       case 'Intermediate': return 'bg-blue-100 text-blue-700';

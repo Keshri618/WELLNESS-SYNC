@@ -4,6 +4,8 @@ import HeroSection from '../components/HeroSection';
 import FeatureSection from '../components/FeatureSection';
 import BuddyMatchSection from '../components/BuddyMatchSection';
 import ChallengeArena from '../components/ChallengeArena';
+import QuickWins from '../components/QuickWins';
+import Testimonials from '../components/Testimonials';
 export default function page() {
   return (
     <>
@@ -12,6 +14,8 @@ export default function page() {
       <FeatureSection />
       <BuddyMatchSection />
       <ChallengeArena />
+      <QuickWins />
+      <Testimonials />
     </>
   );
 }

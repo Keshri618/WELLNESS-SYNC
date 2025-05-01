@@ -6,6 +6,10 @@ import BuddyMatchSection from '../components/BuddyMatchSection';
 import ChallengeArena from '../components/ChallengeArena';
 import QuickWins from '../components/QuickWins';
 import Testimonials from '../components/Testimonials';
+import GoogleMapsLoader from '../components/GoogleMapsLoader';
+//import firebase from '../lib/firebase';
+//import firebase from '../lib/firebase';
+import Map from '../components/Map';
 export default function page() {
   return (
     <>
@@ -16,6 +20,9 @@ export default function page() {
       <ChallengeArena />
       <QuickWins />
       <Testimonials />
+      <GoogleMapsLoader />
+      <Map />
+      
     </>
   );
 }

@@ -62,7 +62,7 @@ const StarRating = ({ rating }: { rating: number }) => {
       {[...Array(5)].map((_, i) => (
         <svg
           key={i}
-          className={`w-5 h-5 ${i < rating ? "text-yellow-400" : "text-gray-400"}`}
+          className={`w-5 h-5 ${i < rating ? "text-amber-500" : "text-gray-300"}`}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -73,20 +73,20 @@ const StarRating = ({ rating }: { rating: number }) => {
   );
 };
 
-// Improved Testimonial Card Component with better visibility
+// Improved Testimonial Card Component with light theme
 const TestimonialCard = ({ testimonial, isActive }: { testimonial: Testimonial, isActive: boolean }) => {
   return (
     <div 
-      className={`w-full max-w-sm mx-auto bg-opacity-30 bg-white backdrop-filter backdrop-blur-lg rounded-xl shadow-lg p-6 transition-all duration-300 ${
-        isActive ? "border-2 border-blue-400" : "border border-white border-opacity-20"
+      className={`w-full max-w-sm mx-auto bg-white rounded-xl shadow-lg p-6 transition-all duration-300 ${
+        isActive ? "border-2 border-blue-400 shadow-xl" : "border border-gray-100"
       }`}
     >
-      {/* Enhanced Avatar with glowing effects */}
+      {/* Enhanced Avatar */}
       <div className="flex justify-center mb-6">
         <div className="relative">
-          {/* Avatar Circle with glowing effect */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 opacity-70 blur-md"></div>
-          <div className="relative w-24 h-24 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1 shadow-xl">
+          {/* Avatar Circle with soft glow */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-200 to-purple-200 opacity-70 blur-md"></div>
+          <div className="relative w-24 h-24 rounded-full bg-gradient-to-r from-blue-300 to-purple-300 p-1 shadow-md">
             <div className="w-full h-full rounded-full overflow-hidden bg-white">
               <img 
                 src={testimonial.avatar} 
@@ -96,31 +96,31 @@ const TestimonialCard = ({ testimonial, isActive }: { testimonial: Testimonial, 
             </div>
           </div>
           
-          {/* Enhanced user initial badge */}
-          <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold shadow-lg border-2 border-white">
+          {/* User initial badge */}
+          <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-400 flex items-center justify-center text-white font-bold shadow-md border-2 border-white">
             {testimonial.name.charAt(0)}
           </div>
         </div>
       </div>
       
-      {/* Improved name and role with better visibility */}
+      {/* Name and role with light theme */}
       <div className="text-center mb-4">
-        <div className="bg-gradient-to-r from-blue-400 to-purple-500 rounded-lg py-2 px-4 mb-2 shadow-md">
-          <h3 className="text-xl font-bold text-white drop-shadow-md">{testimonial.name}</h3>
+        <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg py-2 px-4 mb-2 shadow-sm">
+          <h3 className="text-xl font-bold text-gray-800">{testimonial.name}</h3>
         </div>
-        <div className="bg-black bg-opacity-50 rounded-full py-1 px-4 inline-block">
-          <p className="text-blue-300 text-sm font-medium">{testimonial.role}</p>
+        <div className="bg-gray-50 rounded-full py-1 px-4 inline-block">
+          <p className="text-blue-600 text-sm font-medium">{testimonial.role}</p>
         </div>
       </div>
       
-      {/* Rating stars with improved visibility */}
-      <div className="flex justify-center mb-4 bg-black bg-opacity-30 py-2 rounded-full">
+      {/* Rating stars */}
+      <div className="flex justify-center mb-4 bg-gray-50 py-2 rounded-full">
         <StarRating rating={testimonial.rating} />
       </div>
       
-      {/* Quote with guaranteed visibility */}
-      <div className="bg-black bg-opacity-50 p-4 rounded-lg border border-white border-opacity-20 shadow-md">
-        <p className="text-white text-opacity-100 italic text-base font-medium">&ldquo;{testimonial.quote}&rdquo;</p>
+      {/* Quote with light theme */}
+      <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 shadow-sm">
+        <p className="text-gray-700 italic text-base font-medium">&ldquo;{testimonial.quote}&rdquo;</p>
       </div>
     </div>
   );
@@ -175,21 +175,21 @@ export default function TestimonialsSection() {
   };
   
   return (
-    <section className="relative w-full py-16 px-4 bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 overflow-hidden">
+    <section className="relative w-full py-16 px-4 bg-gradient-to-br from-blue-50 via-purple-50 to-white overflow-hidden">
       {/* Dynamic background elements */}
-      <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-blue-500 opacity-20 blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full bg-purple-500 opacity-20 blur-3xl animate-pulse"></div>
-      <div className="absolute top-1/3 right-1/4 w-32 h-32 rounded-full bg-pink-500 opacity-10 blur-2xl animate-pulse"></div>
-      <div className="absolute bottom-1/3 left-1/4 w-32 h-32 rounded-full bg-indigo-500 opacity-10 blur-2xl animate-pulse"></div>
+      <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-blue-200 opacity-40 blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full bg-purple-200 opacity-40 blur-3xl animate-pulse"></div>
+      <div className="absolute top-1/3 right-1/4 w-32 h-32 rounded-full bg-pink-100 opacity-30 blur-2xl animate-pulse"></div>
+      <div className="absolute bottom-1/3 left-1/4 w-32 h-32 rounded-full bg-indigo-100 opacity-30 blur-2xl animate-pulse"></div>
       
       <div className="relative max-w-6xl mx-auto">
-        {/* Section heading with enhanced styling */}
+        {/* Section heading with light styling */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-black bg-opacity-30 px-8 py-4 rounded-xl mb-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300 mb-4">What Our Users Say</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto rounded-full"></div>
+          <div className="inline-block bg-white bg-opacity-80 px-8 py-4 rounded-xl mb-4 shadow-sm">
+            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 mb-4">What Our Users Say</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-300 to-purple-300 mx-auto rounded-full"></div>
           </div>
-          <p className="text-blue-100 mt-6 max-w-lg mx-auto text-lg font-medium">
+          <p className="text-gray-600 mt-6 max-w-lg mx-auto text-lg font-medium">
             Discover how WellnessSync is transforming lives with personalized wellness guidance
           </p>
         </div>
@@ -212,7 +212,7 @@ export default function TestimonialsSection() {
                 className={`w-3 h-3 rounded-full transition-all ${
                   activeIndex === index 
                     ? "bg-blue-400 w-6" 
-                    : "bg-white bg-opacity-30"
+                    : "bg-gray-300"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
@@ -226,10 +226,10 @@ export default function TestimonialsSection() {
             {/* Previous button */}
             <button 
               onClick={() => goToTestimonial(activeIndex - 1)}
-              className="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full shadow-md transition-all hover:shadow-blue-400/30"
+              className="bg-white p-3 rounded-full shadow-md transition-all hover:shadow-blue-200 border border-gray-100"
               aria-label="Previous testimonials"
             >
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
@@ -246,10 +246,10 @@ export default function TestimonialsSection() {
             {/* Next button */}
             <button 
               onClick={() => goToTestimonial(activeIndex + 1)}
-              className="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full shadow-md transition-all hover:shadow-blue-400/30"
+              className="bg-white p-3 rounded-full shadow-md transition-all hover:shadow-blue-200 border border-gray-100"
               aria-label="Next testimonials"
             >
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -264,7 +264,7 @@ export default function TestimonialsSection() {
                 className={`w-3 h-3 rounded-full transition-all ${
                   activeIndex === index 
                     ? "bg-blue-400 w-6" 
-                    : "bg-white bg-opacity-30"
+                    : "bg-gray-300"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
@@ -276,7 +276,7 @@ export default function TestimonialsSection() {
         <div className="flex justify-center mt-8">
           <button
             onClick={() => setIsPaused(!isPaused)}
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-full text-white text-sm font-medium shadow-md transition-all"
+            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-400 to-purple-400 hover:from-blue-500 hover:to-purple-500 rounded-full text-white text-sm font-medium shadow-md transition-all"
           >
             {isPaused ? (
               <>
